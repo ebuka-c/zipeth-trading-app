@@ -56,6 +56,9 @@ class SendToken extends StatelessWidget {
                   style: const TextStyle(color: AppColors.blueIcon),
                   decoration: InputDecoration(
                     labelText: 'Token address or name...',
+                    hintText: 'Token address or name...',
+                    hintStyle: GoogleFonts.openSans(
+                        color: AppColors.lightBtnColor, fontSize: 12),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(width * 0.02),
                       borderSide: const BorderSide(

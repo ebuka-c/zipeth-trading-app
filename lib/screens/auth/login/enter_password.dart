@@ -5,8 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../values/colors.dart';
 
-class EnterPassword extends StatelessWidget {
+class EnterPassword extends StatefulWidget {
   const EnterPassword({super.key});
+
+  @override
+  State<EnterPassword> createState() => _EnterPasswordState();
+}
+
+class _EnterPasswordState extends State<EnterPassword> {
+  String password = '';
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class EnterPassword extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
           colors: [
             AppColors.primaryBg,
@@ -87,25 +95,36 @@ class EnterPassword extends StatelessWidget {
                           ),
                     ),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(
+                          color: Color.fromRGBO(255, 255, 255, 1)),
                       decoration: InputDecoration(
                         labelText: 'ENTER PASSWORD',
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(width * 0.05),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: AppColors.primaryBg,
                             width: 2.0,
                           ),
                         ),
-                        labelStyle: TextStyle(
+                        labelStyle: const TextStyle(
                           color: AppColors.greyText,
                         ),
                         border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 5),
+                          borderSide: const BorderSide(width: 5),
                           borderRadius: BorderRadius.circular(width * 0.02),
                         ),
-                        suffixIcon: Icon(Icons.arrow_forward),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              obscureText = !obscureText;
+                            });
+                          },
+                          child: Icon(obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
                       ),
+                      obscureText: obscureText,
                     ),
                   ),
                 ),

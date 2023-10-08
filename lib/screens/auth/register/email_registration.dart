@@ -14,6 +14,8 @@ class EmailReg extends StatefulWidget {
 }
 
 class _EmailRegState extends State<EmailReg> {
+  String password = '';
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -141,21 +143,31 @@ class _EmailRegState extends State<EmailReg> {
                           ),
                     ),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         labelText: 'CREATE PASSWORD *',
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(width * 0.05),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: AppColors.primaryBg,
                             width: 2.0,
                           ),
                         ),
-                        labelStyle: TextStyle(color: AppColors.greyText),
+                        labelStyle: const TextStyle(color: AppColors.greyText),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(width * 0.02)),
-                        suffixIcon: Icon(Icons.arrow_forward),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              obscureText = !obscureText;
+                            });
+                          },
+                          child: Icon(obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
                       ),
+                      obscureText: obscureText,
                     ),
                   ),
                 ),

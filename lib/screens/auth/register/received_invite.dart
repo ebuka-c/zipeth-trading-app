@@ -4,8 +4,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zipeth/values/colors.dart';
 
-class ReceivedInvite extends StatelessWidget {
+class ReceivedInvite extends StatefulWidget {
   const ReceivedInvite({super.key});
+
+  @override
+  State<ReceivedInvite> createState() => _ReceivedInviteState();
+}
+
+class _ReceivedInviteState extends State<ReceivedInvite> {
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -116,21 +123,31 @@ class ReceivedInvite extends StatelessWidget {
                         ),
                   ),
                   child: TextFormField(
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: 'ENTER INVITE CODE *',
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(width * 0.05),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: AppColors.primaryBg,
                           width: 2.0,
                         ),
                       ),
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(width * 0.02)),
-                      suffixIcon: Icon(Icons.arrow_forward),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
+                        },
+                        child: Icon(obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
                     ),
+                    obscureText: obscureText,
                   ),
                 ),
               ),
@@ -155,7 +172,7 @@ class ReceivedInvite extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: height * 0.25)
+            SizedBox(height: height * 0.2)
           ]),
         ),
       ),

@@ -1,16 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../bottom_sheets/exchange_depositBTMS.dart';
 import '../../values/colors.dart';
 
-class ReceiveToken extends StatelessWidget {
+class ReceiveToken extends StatefulWidget {
   const ReceiveToken({super.key});
 
   @override
+  State<ReceiveToken> createState() => _ReceiveTokenState();
+}
+
+class _ReceiveTokenState extends State<ReceiveToken> {
+  late TextEditingController controller;
+  String amount = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+
+    super.dispose();
+  }
+
+  void submit() {
+    Navigator.of(context).pop(controller.text);
+    controller.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    Future<String?> openDialog() {
+      return showDialog<String>(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text('Enter Amount'),
+                content: TextField(
+                  keyboardType: TextInputType.number,
+                  controller: controller,
+                  decoration:
+                      const InputDecoration(hintText: 'Enter amount here'),
+                  onSubmitted: (_) => submit(),
+                ),
+                actions: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                  const SizedBox(width: 15),
+                  GestureDetector(
+                    onTap: () {
+                      submit;
+                    },
+                    child: const Text('Confirm'),
+                  ),
+                ],
+              ));
+    }
+
+    String data = '';
+
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -23,7 +82,7 @@ class ReceiveToken extends StatelessWidget {
             onTap: () {
               Get.back();
             },
-            child: Icon(Icons.arrow_back, color: AppColors.lightBtnColor),
+            child: const Icon(Icons.arrow_back, color: AppColors.lightBtnColor),
           ),
           title: Text(
             'Receive Ethereum',
@@ -36,17 +95,27 @@ class ReceiveToken extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Center(
               child: Container(
-                height: height * 0.4,
-                width: width * 0.5,
+                height: height * 0.37,
+                width: width * 0.55,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(height * 0.02),
                   ),
                   color: AppColors.lightBtnColor,
                 ),
+                child: QrImageView(
+                  data: data,
+                ),
               ),
             ),
-            SizedBox(height: height * 0.17),
+            SizedBox(
+              height: height * 0.04,
+            ),
+            Text(
+              '+ $amount ETH',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: height * 0.13),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -58,14 +127,25 @@ class ReceiveToken extends StatelessWidget {
                     ),
                     child: const Icon(Icons.copy_rounded,
                         color: AppColors.walletBg)),
-                Container(
-                    padding: EdgeInsets.all(width * 0.04),
-                    decoration: const BoxDecoration(
-                      color: AppColors.blueIcon,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(Icons.tag,
-                        color: AppColors.walletBg.withOpacity(0.7))),
+                GestureDetector(
+                  onTap: () async {
+                    ////////////
+                    final amount = await openDialog();
+                    if (amount == null || amount.isEmpty) return;
+
+                    setState(() {
+                      this.amount = amount;
+                    });
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(width * 0.04),
+                      decoration: const BoxDecoration(
+                        color: AppColors.blueIcon,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.tag,
+                          color: AppColors.walletBg.withOpacity(0.7))),
+                ),
                 Container(
                     padding: EdgeInsets.all(width * 0.04),
                     decoration: const BoxDecoration(
@@ -77,14 +157,19 @@ class ReceiveToken extends StatelessWidget {
               ],
             ),
             SizedBox(height: height * 0.015),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              Text('Copy',
-                  style: GoogleFonts.openSans(color: AppColors.blueIcon)),
-              Text('Set Amount',
-                  style: GoogleFonts.openSans(color: AppColors.blueIcon)),
-              Text('Share',
-                  style: GoogleFonts.openSans(color: AppColors.blueIcon))
-            ]),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('Copy',
+                        style: GoogleFonts.openSans(color: AppColors.blueIcon)),
+                    Text('Set Amount',
+                        style: GoogleFonts.openSans(color: AppColors.blueIcon)),
+                    Text('Share',
+                        style: GoogleFonts.openSans(color: AppColors.blueIcon))
+                  ]),
+            ),
             SizedBox(height: height * 0.04),
             GestureDetector(
               onTap: () {
@@ -109,10 +194,10 @@ class ReceiveToken extends StatelessWidget {
                             color: AppColors.darkBtnColor,
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(Icons.arrow_downward,
+                          child: const Icon(Icons.arrow_downward,
                               color: AppColors.blueIcon)),
                       Container(
-                        margin: EdgeInsets.only(top: 2, right: 30),
+                        margin: const EdgeInsets.only(top: 2, right: 30),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

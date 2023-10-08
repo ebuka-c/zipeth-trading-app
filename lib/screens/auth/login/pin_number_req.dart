@@ -30,13 +30,13 @@ class PINRequest extends StatelessWidget {
           // stops: [0.1, 1],
         )),
         child: Container(
-          margin: EdgeInsets.only(top: height * 0.3),
+          margin: EdgeInsets.only(top: height * 0.35),
           child: Column(
             children: [
               Text(
                 'Enter Your Pin',
                 style: GoogleFonts.roboto(
-                  color: Color(0xffefefef),
+                  color: AppColors.lightBtnColor,
                   fontSize: height * 0.025,
                   fontWeight: FontWeight.w400,
                 ),
