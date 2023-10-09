@@ -36,7 +36,7 @@ List<dynamic> newsData = [
     'subtitle': '01-11-2022',
   },
   {
-    'title': 'Exciting News! Zipeth Launches Zipeth Charity',
-    'subtitle': '12-09-2022',
+    'title': 'Winter is coming',
+    'subtitle': '18-09-2022',
   }
 ];

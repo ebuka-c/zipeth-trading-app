@@ -78,9 +78,9 @@ newsBottomSheet(context) {
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height - 200,
-                          padding: EdgeInsets.only(left: 20),
+                          padding: const EdgeInsets.only(left: 20),
                           child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             itemCount: newsData.length,
                             itemBuilder: (context, index) {
                               return FadeInRight(
@@ -105,11 +105,12 @@ newsBottomSheet(context) {
                                     },
                                     child: Stack(children: [
                                       const CircleAvatar(
+                                        radius: 25,
                                         backgroundColor: AppColors.darkBtnColor,
                                       ),
                                       Container(
-                                        width: 50,
-                                        height: 30,
+                                        width: 60,
+                                        height: 40,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(15),

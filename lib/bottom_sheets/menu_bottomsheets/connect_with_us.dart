@@ -9,7 +9,7 @@ connectBTMS(context) {
       context: context,
       builder: (BuildContext c) {
         return Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10)),
             color: AppColors.darkBtnColor,

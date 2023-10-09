@@ -2,6 +2,7 @@ import 'package:zipeth/screens/affiliate/join_affiliate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:zipeth/screens/payment_gateway.dart';
 
 import '../screens/traders/mirror_trade.dart';
 import '../../values/colors.dart';
@@ -101,24 +102,29 @@ bottomSheet(context) {
                 indent: 10,
                 endIndent: 10,
                 color: AppColors.greyText.withOpacity(0.5)),
-            Padding(
-              padding: const EdgeInsets.only(top: 6, bottom: 6),
-              child: ListTile(
-                leading: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                      color: AppColors.darkBtnColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.money,
-                      color: AppColors.lightBtnColor,
-                    )),
-                title: Text('Payment Gateway',
-                    style: GoogleFonts.openSans(
-                        fontSize: 15,
+            GestureDetector(
+              onTap: () {
+                Get.to(() => const Companies());
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 6, bottom: 6),
+                child: ListTile(
+                  leading: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: AppColors.darkBtnColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.money,
                         color: AppColors.lightBtnColor,
-                        fontWeight: FontWeight.w600)),
+                      )),
+                  title: Text('Payment Gateway',
+                      style: GoogleFonts.openSans(
+                          fontSize: 15,
+                          color: AppColors.lightBtnColor,
+                          fontWeight: FontWeight.w600)),
+                ),
               ),
             ),
             Divider(

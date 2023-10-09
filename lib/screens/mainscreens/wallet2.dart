@@ -98,7 +98,7 @@ class _Wallet2State extends State<Wallet2> {
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -249,20 +249,20 @@ class _Wallet2State extends State<Wallet2> {
                   ////////////////////////////////////
                   Expanded(
                     child: ListView.builder(
-                      padding: EdgeInsets.only(top: 20),
-                      physics: NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.only(top: 20),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: tokens.length,
                       itemBuilder: (context, index) {
                         return FadeInDown(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => TokenActions());
+                              Get.to(() => const TokenActions());
                             },
                             child: Container(
                               ///////////////
-                              margin: EdgeInsets.only(bottom: 10),
-                              padding: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.only(bottom: 10),
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 10),
                               decoration: BoxDecoration(
                                 color: AppColors.walletBg,
@@ -335,35 +335,34 @@ class _Wallet2State extends State<Wallet2> {
                       },
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: height * 0.01),
+                    child: Row(
+                      children: [
+                        SizedBox(width: width * 0.15),
+                        Container(
+                            padding: EdgeInsets.all(width * 0.003),
+                            decoration: const BoxDecoration(
+                              color: AppColors.blueIcon,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.add,
+                                color: AppColors.walletBg)),
+                        SizedBox(width: width * 0.03),
+                        Text(
+                          'Add Tokens',
+                          style: GoogleFonts.openSans(
+                              color: AppColors.blueIcon,
+                              fontSize: width * 0.04),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
           )
         ]),
-        bottomNavigationBar: Container(
-          height: height * 0.07,
-          color: AppColors.walletBg,
-          child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-            Row(
-              children: [
-                SizedBox(width: width * 0.15),
-                Container(
-                    padding: EdgeInsets.all(width * 0.003),
-                    decoration: const BoxDecoration(
-                      color: AppColors.blueIcon,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.add, color: AppColors.walletBg)),
-                SizedBox(width: width * 0.03),
-                Text(
-                  'Add Tokens',
-                  style: GoogleFonts.openSans(
-                      color: AppColors.blueIcon, fontSize: width * 0.04),
-                )
-              ],
-            )
-          ]),
-        ),
       ),
     );
   }
