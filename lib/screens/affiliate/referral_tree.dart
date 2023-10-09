@@ -1,29 +1,22 @@
-import 'package:zipeth/data/search_traders_info.dart';
-import 'package:zipeth/screens/traders/copy_traders.dart';
-import 'package:zipeth/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../bottom_sheets/mirror_trade_BTMS.dart';
+import '../../values/colors.dart';
 import '../../widgets/app_widgets.dart';
-import '../../widgets/search_traders_card.dart';
 
-class MirrorTrade extends StatefulWidget {
-  const MirrorTrade({super.key});
+class ReferralTree extends StatefulWidget {
+  const ReferralTree({super.key});
 
   @override
-  State<MirrorTrade> createState() => _MirrorTradeState();
+  State<ReferralTree> createState() => _ReferralTreeState();
 }
 
-class _MirrorTradeState extends State<MirrorTrade> {
-  void updateList(String value) {}
-
+class _ReferralTreeState extends State<ReferralTree> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.walletBg,
@@ -54,7 +47,7 @@ class _MirrorTradeState extends State<MirrorTrade> {
                       btnColor: AppColors.darkBtnColor,
                       btnWidth: width * 0.5,
                       btnHeight: height * 0.075,
-                      text: 'Published Traders',
+                      text: 'Your Referral Tree',
                       textSize: height * 0.018,
                       textWeight: FontWeight.bold,
                       textColor: AppColors.lightBtnColor,
@@ -62,7 +55,7 @@ class _MirrorTradeState extends State<MirrorTrade> {
                   ],
                 ),
               ),
-              SizedBox(height: height * 0.02),
+              SizedBox(height: height * 0.03),
               Container(
                 margin: EdgeInsets.only(
                   left: width * 0.02,
@@ -76,21 +69,11 @@ class _MirrorTradeState extends State<MirrorTrade> {
                         style: const TextStyle(color: AppColors.lightBtnColor),
                         cursorColor: AppColors.greyText,
                         decoration: InputDecoration(
-                            suffixIcon: GestureDetector(
-                              onTap: () {
-                                mirrorTradeBTMS(context);
-                              },
-                              child: Icon(
-                                Icons.filter_list,
-                                color: AppColors.lightBtnColor,
-                                size: width * 0.08,
-                              ),
-                            ),
                             filled: true,
                             fillColor: AppColors.searchBar,
                             border: const OutlineInputBorder(
                                 borderSide: BorderSide.none),
-                            hintText: "Search for Trader",
+                            hintText: "Search username",
                             hintStyle: GoogleFonts.openSans(
                                 color: AppColors.greyText,
                                 fontSize: width * 0.043,
@@ -103,31 +86,43 @@ class _MirrorTradeState extends State<MirrorTrade> {
                 ),
               ),
               SizedBox(height: height * 0.01),
-
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, top: 10),
+                child: Row(
+                  children: [
+                    Text(
+                      '1ST GENERATION',
+                      style: GoogleFonts.openSans(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.yellow),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: height * 0.1),
               //////////////////////
-              SizedBox(
-                height: height * 0.75,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: mirrorTrade.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Get.to(() => const CopyTrader());
-                      },
-                      child: SearchTradersCard(
-                        avatar: mirrorTrade[index]['avatar'].toString(),
-                        width: width,
-                        height: height,
-                        name: mirrorTrade[index]['name'].toString(),
-                        copyingFee: mirrorTrade[index]['copyingFee']
-                            .toString()
-                            .toUpperCase(),
-                        followers: mirrorTrade[index]['followers'].toString(),
-                        days: mirrorTrade[index]['days'].toString(),
-                      ),
-                    );
+              Text(
+                'You do not have any referrals.',
+                style: GoogleFonts.openSans(
+                    color: AppColors.lightBtnColor,
+                    fontWeight: FontWeight.w500,
+                    fontSize: width * 0.04),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: height * 0.03),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.back();
                   },
+                  child: CustomButton(
+                      btnWidth: width * 0.4,
+                      btnHeight: height * 0.05,
+                      btnColor: AppColors.plusBtnColor,
+                      textSize: width * 0.04,
+                      text: 'Refer Now',
+                      textWeight: FontWeight.bold,
+                      textColor: Colors.white),
                 ),
               )
             ],

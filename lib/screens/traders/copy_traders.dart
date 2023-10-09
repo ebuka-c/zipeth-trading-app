@@ -1,8 +1,10 @@
+import 'package:zipeth/data/available_bots_data.dart';
 import 'package:zipeth/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../bottom_sheets/copy_bot_BTMS.dart';
 import '../../bottom_sheets/trader_botsBTMS.dart';
 import '../../widgets/app_widgets.dart';
 
@@ -170,13 +172,104 @@ class CopyTrader extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: width * 0.9,
-            height: height * 0.18,
-            decoration: BoxDecoration(
-                color: AppColors.darkBtnColor,
-                borderRadius: BorderRadius.circular(15)),
-          )
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: botsCopy.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: height * 0.01, horizontal: width * 0.03),
+                child: Container(
+                  width: width * 0.7,
+                  height: height * 0.18,
+                  decoration: BoxDecoration(
+                      color: AppColors.darkBtnColor,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: height * 0.01),
+                      child: ListTile(
+                        leading: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: CircleAvatar(
+                              backgroundColor: AppColors.walletBg,
+                              child: (Image.asset(botsCopy[index]['leading']!)),
+                            )),
+                        title: Padding(
+                          padding: EdgeInsets.only(right: width * 0.024),
+                          child: Text(
+                            botsCopy[index]['title']!,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.openSans(
+                                color: AppColors.lightBtnColor,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        subtitle: Text(
+                          botsCopy[index]['subtitle']!,
+                          style: GoogleFonts.openSans(
+                              color: AppColors.greyText,
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        trailing: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(botsCopy[index]['percentage']!,
+                                  style: GoogleFonts.openSans(
+                                    color: AppColors.greenText,
+                                    fontSize: width * 0.04,
+                                  )),
+                              Text(
+                                botsCopy[index]['time']!,
+                                style: GoogleFonts.openSans(
+                                    color: AppColors.greyText,
+                                    fontSize: width * 0.03,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ]),
+                      ),
+                    ),
+                    const Divider(
+                      height: 1,
+                      color: AppColors.greyText,
+                      indent: 3,
+                      endIndent: 3,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: width * 0.04,
+                        vertical: height * 0.015,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Capital Range: ${botsCopy[index]['capitalRange']}',
+                            style: GoogleFonts.openSans(
+                                color: AppColors.lightBtnColor),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              copyBotBTMS(context);
+                            },
+                            child: CustomButton(
+                                btnWidth: width * 0.2,
+                                btnHeight: height * 0.04,
+                                btnColor: AppColors.plusBtnColor,
+                                text: 'Copy Bot',
+                                textColor: AppColors.lightBtnColor),
+                          )
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 20)
         ])),
       ),
     ));

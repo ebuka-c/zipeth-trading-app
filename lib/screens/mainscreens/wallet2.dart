@@ -280,7 +280,7 @@ class _Wallet2State extends State<Wallet2> {
                                         height: width * 0.1,
                                         scale: 0.75,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 15,
                                       ),
                                       Column(
@@ -294,7 +294,7 @@ class _Wallet2State extends State<Wallet2> {
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: width * 0.04),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 5,
                                           ),
                                           Row(

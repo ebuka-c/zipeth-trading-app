@@ -23,7 +23,7 @@ class _EmailRegState extends State<EmailReg> {
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
           colors: [
             AppColors.primaryBg,
@@ -34,7 +34,7 @@ class _EmailRegState extends State<EmailReg> {
           // stops: [0.1, 1],
         )),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
@@ -48,7 +48,7 @@ class _EmailRegState extends State<EmailReg> {
                   child: Container(
                     margin:
                         EdgeInsets.only(top: height * 0.1, right: width * 0.75),
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.5),
                       shape: BoxShape.circle,
@@ -66,7 +66,7 @@ class _EmailRegState extends State<EmailReg> {
                   },
                   child: Container(
                     margin: EdgeInsets.only(top: height * 0.1),
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.5),
                       shape: BoxShape.circle,
@@ -86,12 +86,13 @@ class _EmailRegState extends State<EmailReg> {
               Text(
                 'Enter Your Basic Information',
                 style: GoogleFonts.roboto(
-                  color: Color(0xffefefef),
+                  color: const Color(0xffefefef),
                   fontSize: height * 0.025,
                   fontWeight: FontWeight.w400,
                 ),
               ),
               SizedBox(height: height * 0.03),
+              //////
               Padding(
                 padding:
                     EdgeInsets.only(left: width * 0.08, right: width * 0.08),
@@ -107,12 +108,12 @@ class _EmailRegState extends State<EmailReg> {
                     ),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         labelText: 'CREATE EMAIL ADDRESS *',
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(width * 0.05),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: AppColors.primaryBg,
                             width: 2.0,
                           ),
@@ -174,7 +175,7 @@ class _EmailRegState extends State<EmailReg> {
               ),
               SizedBox(height: height * 0.02),
               Container(
-                margin: EdgeInsets.only(right: 120, bottom: 20),
+                margin: const EdgeInsets.only(right: 120, bottom: 20),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -212,10 +213,10 @@ class _EmailRegState extends State<EmailReg> {
                             width: 2.0,
                           ),
                         ),
-                        labelStyle: TextStyle(color: AppColors.greyText),
+                        labelStyle: const TextStyle(color: AppColors.greyText),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(width * 0.02)),
-                        suffixIcon: Icon(Icons.arrow_forward),
+                        suffixIcon: const Icon(Icons.arrow_forward),
                       ),
                     ),
                   ),
@@ -223,14 +224,14 @@ class _EmailRegState extends State<EmailReg> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => InvCodeRequest());
+                  Get.to(() => const InvCodeRequest());
                 },
                 child: Container(
                   margin: EdgeInsets.only(
                       top: height * 0.1,
                       right: width * 0.35,
                       left: width * 0.35),
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.3),
                       // shape: BoxShape.circle,

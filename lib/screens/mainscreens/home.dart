@@ -7,11 +7,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zipeth/values/colors.dart';
+import '../../bottom_sheets/bot_typeBTMS.dart';
 import '../../bottom_sheets/menu_bottomsheets/menu_bottomsheet.dart';
 import '../../bottom_sheets/plus_icon_btmsheet.dart';
+import '../../bottom_sheets/today_botsBTMS.dart';
 import '../../data/home_bots_info.dart';
 import '../../widgets/app_widgets.dart';
 import '../../widgets/leadingbots_widget.dart';
+import '../view_leaderboard.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -37,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               )),
               child: Column(children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   margin: EdgeInsets.only(
                       left: width * 0.02,
                       right: width * 0.02,
@@ -50,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                           newsBottomSheet(context);
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.5),
                             shape: BoxShape.circle,
@@ -67,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                           secndbottomSheet(context);
                         },
                         child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.5),
                               shape: BoxShape.circle,
@@ -94,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.01),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: Text(
                         'JOIN THE WINNING TEAM',
                         textAlign: TextAlign.center,
@@ -113,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         'Our most passive users can earn over 25% monthly. Our top traders are doing over 100% monthly with no technical knowledge',
                         style: GoogleFonts.openSans(
-                          color: Color(0xffefefef),
+                          color: const Color(0xffefefef),
                           letterSpacing: height * 0.0015,
                           fontSize: height * 0.018,
                           fontWeight: FontWeight.w500,
@@ -123,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => GetLicense());
+                        Get.to(() => const GetLicense());
                       },
                       child: CustomButton(
                         btnColor: AppColors.lightBtnColor,
@@ -158,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                       height: 180,
                       width: double.infinity,
                       // color: Colors.amber,
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                       ),
                       child: Expanded(
@@ -199,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       'Top Performing Bots by Traders',
                       style: GoogleFonts.openSans(
-                        color: Color(0xffefefef),
+                        color: const Color(0xffefefef),
                         letterSpacing: height * 0.001,
                         fontSize: height * 0.021,
                         fontWeight: FontWeight.w600,
@@ -210,19 +213,43 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: AppColors.plusBtnColor,
-                                    width: width * 0.005),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100.0))),
+                          GestureDetector(
+                            onTap: () {
+                              todayBots(context);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: AppColors.plusBtnColor,
+                                      width: width * 0.005),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(100.0))),
+                              child: CustomButton(
+                                btnColor: AppColors.deepBtnColor,
+                                btnWidth: width * 0.35,
+                                btnHeight: height * 0.06,
+                                text: 'Today',
+                                suffixIcon: const Icon(
+                                  Icons.keyboard_arrow_down,
+                                  color: AppColors.lightBtnColor,
+                                ),
+                                // textSpacing: height * 0.002,
+                                textSize: height * 0.017,
+                                textWeight: FontWeight.w400,
+                                textColor: AppColors.lightBtnColor,
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              botTypeBTMS(context);
+                            },
                             child: CustomButton(
-                              btnColor: AppColors.deepBtnColor,
+                              btnColor: AppColors.darkBtnColor,
                               btnWidth: width * 0.35,
                               btnHeight: height * 0.06,
-                              text: 'Today',
-                              suffixIcon: Icon(
+                              text: 'Bot Type ',
+                              suffixIcon: const Icon(
                                 Icons.keyboard_arrow_down,
                                 color: AppColors.lightBtnColor,
                               ),
@@ -231,20 +258,6 @@ class HomeScreen extends StatelessWidget {
                               textWeight: FontWeight.w400,
                               textColor: AppColors.lightBtnColor,
                             ),
-                          ),
-                          CustomButton(
-                            btnColor: AppColors.darkBtnColor,
-                            btnWidth: width * 0.35,
-                            btnHeight: height * 0.06,
-                            text: 'Bot Type ',
-                            suffixIcon: Icon(
-                              Icons.keyboard_arrow_down,
-                              color: AppColors.lightBtnColor,
-                            ),
-                            // textSpacing: height * 0.002,
-                            textSize: height * 0.017,
-                            textWeight: FontWeight.w400,
-                            textColor: AppColors.lightBtnColor,
                           ),
                         ],
                       ),
@@ -332,15 +345,20 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       top: height * 0.03, bottom: height * 0.02),
-                  child: Text('View Zipeth Leaderboard',
-                      style: GoogleFonts.roboto(
-                        color: Colors.yellow,
-                        fontSize: height * 0.022,
-                        fontWeight: FontWeight.w400,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.yellow,
-                      ),
-                      textAlign: TextAlign.center),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ViewLeaderboard());
+                    },
+                    child: Text('View Zipeth Leaderboard',
+                        style: GoogleFonts.roboto(
+                          color: Colors.yellow,
+                          fontSize: height * 0.022,
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.yellow,
+                        ),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
               ])),
         ),

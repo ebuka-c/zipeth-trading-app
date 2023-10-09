@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../values/colors.dart';
 
-traderBots(context) {
+mirrorTradeBTMS(context) {
   showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -32,9 +32,9 @@ traderBots(context) {
                   endIndent: 10,
                   color: AppColors.greyText.withOpacity(0.5)),
               Padding(
-                padding: EdgeInsets.only(top: 3, bottom: 3, left: 7),
+                padding: const EdgeInsets.only(top: 3, bottom: 3, left: 7),
                 child: ListTile(
-                  title: Text('Spot Bots',
+                  title: Text('Paid',
                       style: GoogleFonts.openSans(
                           fontSize: 16.5,
                           color: AppColors.lightBtnColor,
@@ -47,9 +47,24 @@ traderBots(context) {
                   endIndent: 10,
                   color: AppColors.greyText.withOpacity(0.5)),
               Padding(
-                padding: EdgeInsets.only(top: 3, bottom: 3, left: 7),
+                padding: const EdgeInsets.only(top: 3, bottom: 3, left: 7),
                 child: ListTile(
-                  title: Text('Future Bots',
+                  title: Text('Free',
+                      style: GoogleFonts.openSans(
+                          fontSize: 16.5,
+                          color: AppColors.lightBtnColor,
+                          fontWeight: FontWeight.w400)),
+                ),
+              ),
+              Divider(
+                  height: 1,
+                  indent: 10,
+                  endIndent: 10,
+                  color: AppColors.greyText.withOpacity(0.5)),
+              Padding(
+                padding: const EdgeInsets.only(top: 3, bottom: 3, left: 7),
+                child: ListTile(
+                  title: Text('APY',
                       style: GoogleFonts.openSans(
                           fontSize: 16.5,
                           color: AppColors.lightBtnColor,

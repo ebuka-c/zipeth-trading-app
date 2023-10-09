@@ -33,5 +33,26 @@ const mirrorTrade = [
     "copyingFee": "2% Copying Fee",
     "followers": "460 Followers",
     "days": "In last 30 days"
-  }
+  },
+  {
+    "avatar": "assets/icons/users.png",
+    "name": "Tricia",
+    "copyingFee": "2% Copying Fee",
+    "followers": "460 Followers",
+    "days": "In last 30 days"
+  },
+  {
+    "avatar": "assets/icons/users.png",
+    "name": "Tricia",
+    "copyingFee": "2% Copying Fee",
+    "followers": "460 Followers",
+    "days": "In last 30 days"
+  },
+  {
+    "avatar": "assets/icons/users.png",
+    "name": "Tricia",
+    "copyingFee": "2% Copying Fee",
+    "followers": "460 Followers",
+    "days": "In last 30 days"
+  },
 ];

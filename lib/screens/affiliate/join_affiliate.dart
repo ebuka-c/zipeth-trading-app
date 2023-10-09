@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:zipeth/screens/affiliate/referral_tree.dart';
 
 import '../../values/colors.dart';
 import '../../widgets/app_widgets.dart';
@@ -281,89 +282,115 @@ class JoinAffiliate extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: height * 0.11,
+                  height: height * 0.2,
                   width: width * 0.9,
                   decoration: BoxDecoration(
                       color: AppColors.darkBtnColor,
                       borderRadius: BorderRadius.circular(10)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                        child: Column(
-                          children: [
-                            Text(
-                              'DIRECT REFERRALS',
-                              style: GoogleFonts.openSans(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.greyText,
-                              ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: height * 0.015),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'BRONZE',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.005,
+                                ),
+                                Text(
+                                  '0',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              height: height * 0.005,
+                          ),
+                          VerticalDivider(
+                            color: AppColors.greyText.withOpacity(0.5),
+                            thickness: 1,
+                            indent: height * 0.01,
+                            endIndent: height * 0.09,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: height * 0.015),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'SILVER',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.005,
+                                ),
+                                Text(
+                                  '0',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              '0',
-                              style: GoogleFonts.openSans(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.greyText,
-                              ),
+                          ),
+                          VerticalDivider(
+                            color: AppColors.greyText.withOpacity(0.5),
+                            thickness: 1,
+                            indent: height * 0.01,
+                            endIndent: height * 0.09,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: height * 0.015),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'GOLD',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 0.005,
+                                ),
+                                Text(
+                                  '0',
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                        child: Column(
-                          children: [
-                            Text(
-                              'DIRECT REFERRALS',
-                              style: GoogleFonts.openSans(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.greyText,
-                              ),
-                            ),
-                            SizedBox(
-                              height: height * 0.005,
-                            ),
-                            Text(
-                              '0',
-                              style: GoogleFonts.openSans(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.greyText,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: height * 0.012,
-                ),
-                Container(
-                  height: height * 0.11,
-                  width: width * 0.9,
-                  decoration: BoxDecoration(
-                      color: AppColors.darkBtnColor,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: height * 0.02,
-                              horizontal: width * 0.05),
-                          child: Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
                             children: [
                               Text(
-                                'TOTAL TEAM',
+                                'DIAMOND',
                                 style: GoogleFonts.openSans(
                                   fontSize: 11,
                                   fontWeight: FontWeight.bold,
@@ -383,8 +410,87 @@ class JoinAffiliate extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                      ]),
+                          VerticalDivider(
+                            color: AppColors.greyText.withOpacity(0.5),
+                            thickness: 1,
+                            indent: height * 0.01,
+                            endIndent: height * 0.09,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'EMERALD',
+                                style: GoogleFonts.openSans(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.greyText,
+                                ),
+                              ),
+                              SizedBox(
+                                height: height * 0.005,
+                              ),
+                              Text(
+                                '0',
+                                style: GoogleFonts.openSans(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.greyText,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  ///////////
+                ),
+                SizedBox(height: height * 0.06),
+                // Container(
+                //   height: 100,
+                //   width: 100,
+                //   color: Colors.amber,
+                // )
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => const ReferralTree());
+                  },
+                  child: CustomButton(
+                      btnWidth: width * 0.85,
+                      btnHeight: height * .06,
+                      btnColor: AppColors.plusBtnColor,
+                      textWeight: FontWeight.bold,
+                      text: 'View Generational Referral Tree  ',
+                      suffixIcon: const Icon(
+                        Icons.arrow_forward,
+                        color: AppColors.lightBtnColor,
+                      ),
+                      textColor: AppColors.lightBtnColor),
+                ),
+                SizedBox(height: height * 0.02),
+                CustomButton(
+                    btnWidth: width * 0.85,
+                    btnHeight: height * .06,
+                    btnColor: AppColors.greenText,
+                    suffixIcon: const Icon(
+                      Icons.arrow_forward,
+                      color: AppColors.lightBtnColor,
+                    ),
+                    textWeight: FontWeight.bold,
+                    text: 'View Rewards  ',
+                    textColor: AppColors.lightBtnColor),
+                SizedBox(height: height * 0.02),
+
+                CustomButton(
+                    btnWidth: width * 0.85,
+                    btnHeight: height * .06,
+                    btnColor: AppColors.lightBtnColor,
+                    textWeight: FontWeight.bold,
+                    text: 'Compensation plan',
+                    textColor: AppColors.darkBtnColor),
+                SizedBox(
+                  height: height * 0.08,
                 ),
               ]),
             )));

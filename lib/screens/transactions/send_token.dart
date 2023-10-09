@@ -55,49 +55,37 @@ class SendToken extends StatelessWidget {
                   // controller: controller.textEditingController,
                   style: const TextStyle(color: AppColors.blueIcon),
                   decoration: InputDecoration(
-                    labelText: 'Token address or name...',
-                    hintText: 'Token address or name...',
-                    hintStyle: GoogleFonts.openSans(
-                        color: AppColors.lightBtnColor, fontSize: 12),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(width * 0.02),
-                      borderSide: const BorderSide(
-                        color: AppColors.blueIcon,
-                        width: 1.0,
-                      ),
-                    ),
-                    labelStyle: GoogleFonts.openSans(
-                        color: AppColors.lightBtnColor, fontSize: 15),
-                    border: OutlineInputBorder(
+                      labelText: 'Token address or name...',
+                      hintStyle: GoogleFonts.openSans(
+                          color: AppColors.lightBtnColor, fontSize: 12),
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(width * 0.02),
-                        borderSide:
-                            const BorderSide(color: AppColors.lightBtnColor)),
-                    ////////////suffix icons
-                    suffixIcon: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const QRScanner());
-                          },
-                          child: const Icon(
-                            Icons.qr_code_scanner_rounded,
-                            color: AppColors.blueIcon,
-                          ),
+                        borderSide: const BorderSide(
+                          color: AppColors.blueIcon,
+                          width: 1.0,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: width * 0.02, left: width * 0.04),
-                          child: Text(
-                            'PASTE',
-                            style: GoogleFonts.openSans(
-                              color: AppColors.blueIcon,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                      ),
+                      labelStyle: GoogleFonts.openSans(
+                          color: AppColors.lightBtnColor, fontSize: 15),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(width * 0.02),
+                          borderSide:
+                              const BorderSide(color: AppColors.lightBtnColor)),
+                      ////////////suffix icons
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          Get.to(() => const QRScanner());
+                        },
+                        child: const Icon(
+                          Icons.qr_code_scanner_rounded,
+                          color: AppColors.blueIcon,
+                        ),
+                      ),
+                      suffix: Text(
+                        'PASTE',
+                        style: GoogleFonts.openSans(
+                            color: AppColors.blueIcon, fontSize: width * 0.04),
+                      )),
                 ),
               ),
             ),

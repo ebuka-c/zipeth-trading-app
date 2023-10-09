@@ -7,7 +7,7 @@ import '../screens/traders/mirror_trade.dart';
 import '../../values/colors.dart';
 
 bottomSheet(context) {
-  var width = MediaQuery.of(context).size.width;
+  // var width = MediaQuery.of(context).size.width;
   showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -21,7 +21,7 @@ bottomSheet(context) {
           child: Wrap(children: [
             Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
               Container(
-                margin: EdgeInsets.only(top: 6, bottom: 8),
+                margin: const EdgeInsets.only(top: 6, bottom: 8),
                 height: 5,
                 width: 50,
                 decoration: BoxDecoration(
@@ -30,18 +30,18 @@ bottomSheet(context) {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => MirrorTrade());
+                  Get.to(() => const MirrorTrade());
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(top: 6, bottom: 10),
+                  padding: const EdgeInsets.only(top: 6, bottom: 10),
                   child: ListTile(
                     leading: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
                           color: AppColors.darkBtnColor,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.content_copy,
                           color: Colors.white,
                         )),
@@ -56,36 +56,6 @@ bottomSheet(context) {
                           color: AppColors.greyText,
                           fontWeight: FontWeight.w500),
                     ),
-                  ),
-                ),
-              ),
-              Divider(
-                  height: 1,
-                  indent: 10,
-                  endIndent: 10,
-                  color: AppColors.greyText.withOpacity(0.5)),
-              Padding(
-                padding: EdgeInsets.only(top: 6, bottom: 10),
-                child: ListTile(
-                  leading: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: AppColors.darkBtnColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.create,
-                        color: Colors.white,
-                      )),
-                  title: Text('Create Your Bot',
-                      style: GoogleFonts.openSans(
-                          fontSize: 15,
-                          color: AppColors.lightBtnColor,
-                          fontWeight: FontWeight.w600)),
-                  subtitle: Text(
-                    'Choose a bot type and add your own rules and conditions for trade entries and exits.',
-                    style: GoogleFonts.openSans(
-                        color: AppColors.greyText, fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
@@ -132,7 +102,7 @@ bottomSheet(context) {
                 endIndent: 10,
                 color: AppColors.greyText.withOpacity(0.5)),
             Padding(
-              padding: EdgeInsets.only(top: 6, bottom: 6),
+              padding: const EdgeInsets.only(top: 6, bottom: 6),
               child: ListTile(
                 leading: Container(
                     padding: const EdgeInsets.all(10),
